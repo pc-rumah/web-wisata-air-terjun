@@ -20,12 +20,7 @@
             @include('components.dash.header')
 
             <div class="container-fluid">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title fw-semibold mb-4">Sample Page</h5>
-                        <p class="mb-0">This is a sample page </p>
-                    </div>
-                </div>
+                @yield('content')
             </div>
         </div>
     </div>
@@ -36,6 +31,37 @@
     <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
     <script src="../assets/js/dashboard.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.querySelectorAll('.alert').forEach(function(alertBox) {
+                    alertBox.classList.remove('show');
+                    alertBox.classList.add('fade');
+
+                    setTimeout(() => alertBox.remove(), 500);
+                });
+            }, 5000);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert');
+
+            alert.forEach(function(alert) {
+                setTimeout(function() {
+                    alert.classList.add('fade');
+                    alert.classList.add('show');
+
+                    alert.classList.transition = 'opacity 0.5s ease';
+                    alert.classList.opacity = '0';
+
+                    setTimeout(function() {
+                        alert.remove();
+                    }, 500);
+                }, 5000);
+            })
+        })
+    </script>
 </body>
 
 </html>
